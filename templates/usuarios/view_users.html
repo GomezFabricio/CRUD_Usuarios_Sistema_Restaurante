@@ -1,0 +1,76 @@
+{% extends 'components/layout.html' %}
+
+{% block content %}
+
+<head>
+  <link rel="stylesheet" href="/static/css/tables.css">
+  <link rel="stylesheet" href="/static/css/flash_messages-tables.css">
+  <link rel="stylesheet" href="/static/css/show_password.css">
+</head>
+
+<div class="container">
+  <h1 class="title">Usuarios</h1>
+  <!-- Mostrar mensajes flash -->
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div class="flash-messages">
+    {% for message in messages %}
+    <div class="flash-message {% if message.startswith('Error') %}error{% else %}success{% endif %}">
+      {{ message }}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% endwith %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">DNI</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Usuario</th>
+        <th scope="col">Password</th>
+        <th scope="col">Rol</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+      <tr>
+        <th scope="row">{{ loop.index }}</th>
+        <td>{{ user[0] }}</td>
+        <td>{{ user[1] }}</td>
+        <td>{{ user[6] }}</td>
+        <td>{{ user[2] }}</td>
+        <td>{{ user[3] }}</td>
+        <td>
+          <div class="input-group-password">
+            <input type="password" class="form-control" value="{{ user[4] }}" readonly>
+            <button type="button" class="btn btn-secondary" onclick="togglePassword(this)">
+              <i class="fa fa-eye"></i>
+            </button>
+          </div>
+        </td>
+        <td>{{ user[5] }}</td>
+        <td>
+          <a href="{{ url_for('DeleteUser', id = user[7]) }}" onclick="return confirm('¿Estás seguro de que deseas eliminar este cliente?');">
+            <button class="btn btn-delete"><i class="fas fa-trash-alt"></i></button>
+          </a>
+          <a href="{{ url_for('UpdateUser', id = user[7]) }}">
+            <button class="btn btn-edit"><i class="fas fa-edit"></i></button>
+          </a>
+        </td>
+      </tr> 
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a href="{{url_for('AddUser')}}">
+    <button class="btn btn-primary">Agregar Usuario</button>
+  </a>
+</div>
+
+<script src="/static/js/showPassword.js"></script>
+{% endblock %}

@@ -1,0 +1,36 @@
+@keyframes codingAnimation {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.construction {
+  text-align: center;
+}
+
+.construction h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ff0000;
+  margin-bottom: 20px;
+}
+
+.construction p {
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 40px;
+}
+
+.construction .programmer-img {
+  width: 800px;
+  height: 500px;
+  margin-bottom: 40px;
+  animation: codingAnimation 1s ease-in-out;
+}

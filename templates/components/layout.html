@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Link css -->
+    <link rel="stylesheet" href="/static/css/styles_layout.css">
+
+    <!-- Kit de iconos -->
+    <link rel="stylesheet" href="/static/utils/font/css/all.min.css">
+
+</head>
+
+<body id="body">
+
+    <header>
+        <div class="icon__menu">
+            <i class="fas fa-bars" id="btn_open"></i>
+        </div>
+    </header>
+
+    <div class="menu__side" id="menu_side">
+        <div class="name__page">
+            <i class="fa-solid fa-utensils"></i>
+            <h4>Restaurante</h4>
+        </div>
+        <div class="options__menu">
+            <a href="{{url_for('proceso')}}">
+                <div class="option">
+                    <i class="fa-solid fa-book-open", title="Reservaciones" ></i>
+                    <h4>Reservaciones</h4>
+                </div>
+            </a>
+            <a href="{{url_for('ListClients')}}" class="selected">
+                <div class="option">
+                    <i class="fa-solid fa-user" title="Clientes"></i>
+                    <h4>Clientes</h4>
+                </div>
+            </a>
+            <a href="{{url_for('proceso')}}">
+                <div class="option">
+                    <i class="fa-solid fa-circle" title="Mesas"></i>
+                    <h4>Mesas</h4>
+                </div>
+            </a>
+            <a href="{{url_for('proceso')}}">
+                <div class="option">
+                    <i class="fa-solid fa-book-open-reader" title="Carta Menú"></i>
+                    <h4>Carta Menú</h4>
+                </div>
+            </a>
+<!--             <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-burger" title="Comidas"></i>
+                    <h4>Comidas</h4>
+                </div>
+            </a>
+            <a href="#">
+                <div class="option">
+                    <i class="fa-solid fa-wine-glass" title="Bebidas"></i>
+                    <h4>Bebidas</h4>
+                </div>
+            </a> -->
+            <a href="{{url_for('proceso')}}">
+                <div class="option">
+                    <i class="fa-regular fa-note-sticky" title="Facturas"></i>
+                    <h4>Facturas</h4>
+                </div>
+            </a>
+            <a href="{{url_for('proceso')}}">
+                <div class="option">
+                    <i class="fa-solid fa-warehouse" title="Inventario"></i>
+                    <h4>Inventario</h4>
+                </div>
+            </a>
+            <a href="{{ url_for('ListUsers') }}">
+                <div class="option">
+                    <i class="fa-solid fa-user" title="Usuarios"></i>
+                    <h4>Usuarios</h4>
+                </div>
+            </a>
+            <a href="{{ url_for('Logout') }}">
+                <div class="option">
+                    <i class="fa-solid fa-sign-out-alt" title="Usuarios"></i>
+                    <h4>Cerrar Sesión</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <main>
+        {% block content %}
+        
+        {% endblock %}
+    </main>
+
+    <footer>
+        </div>
+        <div class="footer__bottom">
+            2023 Fortin. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    
+<script src="/static/js/layout.js"></script>
+
+</body>
+</html>
